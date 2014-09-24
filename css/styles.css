@@ -52,7 +52,7 @@ h1{
 
 #help_id, #senate_menu_item,
 #house_menu_item, #upper_house_menu_item,
-#lower_house_menu_item{
+#lower_house_menu_item,  #about_me_id{
 		list-style: none;
 		float: left;
 		padding: 0px 10px 0px 10px;
@@ -62,7 +62,16 @@ h1{
 		background-color: LightGray;
 }
 
-
+#about_site_id{
+		list-style: none;
+		float: left;
+		margin-left: 50px;
+		padding: 0px 10px 0px 10px;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-bottom: 1px solid black;
+		background-color: LightGray;
+}
 
 #site_menu ul{
 	padding-left: 500px;

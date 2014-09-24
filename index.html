@@ -43,88 +43,109 @@
 						<li id="upper_house_menu_item">Upper House</li>
 						<li id="lower_house_menu_item">Lower House</li>
 					<li id="help_id">Help</li>
+					<li id="about_site_id">About this site</li>
+					<li id="about_me_id">About me</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div id="main_content">
-			<div id="help" class="help">
-				<p>The purpose of this application is to provide access to your elected officials at the state and federal level, as well as understanding what they are (or are not) doing on your behalf.</p>
-				<p>Based on your location, you can find your state and federal representatives, any social media links available, and look at what legislation they are sponsoring in the current administration</p>
+			<div id="government_site">
+				<div id="help" class="help">
+					<p>The purpose of this application is to provide access to your elected officials at the state and federal level, as well as understanding what they are (or are not) doing on your behalf.</p>
+					<p>Based on your location, you can find your state and federal representatives, any social media links available, and look at what legislation they are sponsoring in the current administration</p>
 
+				</div>
+				<div id="federal">
+					<span id="find_senator_form">
+						<h2>Find your senators</h2>
+						<select id="senator_state">
+							<option value="AL">Alabama</option>
+							<option value="AK">Alaska</option>
+							<option value="AZ">Arizona</option>
+							<option value="AR">Arkansas</option>
+							<option value="CA">California</option>
+							<option value="CO">Colorado</option>
+							<option value="CT">Connecticut</option>
+							<option value="DE">Delaware</option>
+							<option value="FL">Florida</option>
+							<option value="GA">Georgia</option>
+							<option value="HI">Hawaii</option>
+							<option value="ID">Idaho</option>
+							<option value="IL">Illinois</option>
+							<option value="IN">Indiana</option>
+							<option value="IA">Iowa</option>
+							<option value="KS">Kansas</option>
+							<option value="KY">Kentucky</option>
+							<option value="LA">Louisiana</option>
+							<option value="ME">Maine</option>
+							<option value="MD">Maryland</option>
+							<option value="MA">Massachusetts</option>
+							<option value="MI">Michigan</option>
+							<option value="MN">Minnesota</option>
+							<option value="MS">Mississippi</option>
+							<option value="MO">Missouri</option>
+							<option value="MT">Montana</option>
+							<option value="NE">Nebraska</option>
+							<option value="NV">Nevada</option>
+							<option value="NH">New Hampshire</option>
+							<option value="NJ">New Jersey</option>
+							<option value="NM">New Mexico</option>
+							<option value="NY">New York</option>
+							<option value="NC">North Carolina</option>
+							<option value="ND">North Dakota</option>
+							<option value="OH">Ohio</option>
+							<option value="OK">Oklahoma</option>
+							<option value="OR">Oregon</option>
+							<option value="PA">Pennsylvania</option>
+							<option value="RI">Rhode Island</option>
+							<option value="SC">South Carolina</option>
+							<option value="SD">South Dakota</option>
+							<option value="TN">Tennessee</option>
+							<option value="TX">Texas</option>
+							<option value="UT">Utah</option>
+							<option value="VT">Vermont</option>
+							<option value="VA">Virginia</option>
+							<option value="WA">Washington</option>
+							<option value="WV">West Virginia</option>
+							<option value="WI">Wisconsin</option>
+							<option value="WY">Wyoming</option>
+						</select> 
+						<button id="find_senator" >Search</button>
+					</span>
+					<span id="find_house_form">
+						<h3>Using a zip code</h3>
+						<h4>(if geolocation doesn't work for you)</h4>
+						<input type="text" length="5" id="zip_code"/>
+						<button id="find_congressmen">Find My Congressmen</button>
+					</span>
+					<span id="senator_list">
+						<table id="senator_table">
+							<thead>
+								<th>name</th><th>party</th><th>biography</th><th>email</th><th>contact form</th><th>website</th><th>facebook</th><th>twitter</th><th>You Tube</th></thead>
+								<tbody id="senator_table_body"></tbody>
+						</table>
+					</span>
 			</div>
-			<div id="federal">
-				<span id="find_senator_form">
-					<h2>Find your senators</h2>
-					<select id="senator_state">
-						<option value="AL">Alabama</option>
-						<option value="AK">Alaska</option>
-						<option value="AZ">Arizona</option>
-						<option value="AR">Arkansas</option>
-						<option value="CA">California</option>
-						<option value="CO">Colorado</option>
-						<option value="CT">Connecticut</option>
-						<option value="DE">Delaware</option>
-						<option value="FL">Florida</option>
-						<option value="GA">Georgia</option>
-						<option value="HI">Hawaii</option>
-						<option value="ID">Idaho</option>
-						<option value="IL">Illinois</option>
-						<option value="IN">Indiana</option>
-						<option value="IA">Iowa</option>
-						<option value="KS">Kansas</option>
-						<option value="KY">Kentucky</option>
-						<option value="LA">Louisiana</option>
-						<option value="ME">Maine</option>
-						<option value="MD">Maryland</option>
-						<option value="MA">Massachusetts</option>
-						<option value="MI">Michigan</option>
-						<option value="MN">Minnesota</option>
-						<option value="MS">Mississippi</option>
-						<option value="MO">Missouri</option>
-						<option value="MT">Montana</option>
-						<option value="NE">Nebraska</option>
-						<option value="NV">Nevada</option>
-						<option value="NH">New Hampshire</option>
-						<option value="NJ">New Jersey</option>
-						<option value="NM">New Mexico</option>
-						<option value="NY">New York</option>
-						<option value="NC">North Carolina</option>
-						<option value="ND">North Dakota</option>
-						<option value="OH">Ohio</option>
-						<option value="OK">Oklahoma</option>
-						<option value="OR">Oregon</option>
-						<option value="PA">Pennsylvania</option>
-						<option value="RI">Rhode Island</option>
-						<option value="SC">South Carolina</option>
-						<option value="SD">South Dakota</option>
-						<option value="TN">Tennessee</option>
-						<option value="TX">Texas</option>
-						<option value="UT">Utah</option>
-						<option value="VT">Vermont</option>
-						<option value="VA">Virginia</option>
-						<option value="WA">Washington</option>
-						<option value="WV">West Virginia</option>
-						<option value="WI">Wisconsin</option>
-						<option value="WY">Wyoming</option>
-					</select> 
-					<button id="find_senator" >Search</button>
-				</span>
-				<span id="find_house_form">
-					<h3>Using a zip code</h3>
-					<h4>(if geolocation doesn't work for you)</h4>
-					<input type="text" length="5" id="zip_code"/>
-					<button id="find_congressmen">Find My Congressmen</button>
-				</span>
-				<span id="senator_list">
-					<table id="senator_table">
-						<thead>
-							<th>name</th><th>party</th><th>biography</th><th>email</th><th>contact form</th><th>website</th><th>facebook</th><th>twitter</th><th>You Tube</th></thead>
-							<tbody id="senator_table_body"></tbody>
-					</table>
-				</span>
+			<div id="state">
+			</div>
 		</div>
-		<div id="state">
+		<div id="about_site">
+			<p> This site was built using:</p>
+			<ul> 
+				<li><a href="http://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a></li>
+				<li><a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a></li>
+				<li><a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">javascript</a></li>
+				<li><a href="http://jquery.com" target="_blank">JQuery</a></li>
+				<li>with <a href="http://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST APIs</a> to the <a href="http://sunlightfoundation.com/api/" target="_blank">Sunlight foundation Congress API</a></li>
+			</ul>
+		</div>
+		<div id="about_me">
+			<p>I am a software developer with formal training as a biomedical engineer, electrical engineer, and am licensed to practice before the <a href="http://members.calbar.ca.gov/fal/Member/Detail/248938" target="_blank">California Bar</a> and the <a href="https://oedci.uspto.gov/OEDCI/details.do?regisNum=56456" target="_blank">US Patent Office</a>.
+			</p>
+			<p> <a href="www.linkedin.com/in/mtoback" target="_blank">Here</a> is a link to my LinkedIn profile.</p>
+
+			<p>I know programming languages like <a href="python.org" target="_blank">Python</a>, Java, and Javascript. I've worked with C++, Ada, Perl, and many other languages in the past.</p>
 		</div>
 	</div>
     <script src="js/script.js"></script>

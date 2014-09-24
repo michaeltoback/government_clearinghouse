@@ -1,5 +1,6 @@
 
 document.getElementById("senate_menu_item").onclick = function(){
+	onApp();
 	document.getElementById("federal").style.display = "block";
 	document.getElementById("find_senator_form").style.display = "block";
 	document.getElementById("senator_list").style.display = "none";
@@ -9,6 +10,7 @@ document.getElementById("senate_menu_item").onclick = function(){
 }
 
 document.getElementById("help_id").onclick = function(){
+	onApp();
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("senator_list").style.display = "none";
 	document.getElementById("help").style.display = "block";
@@ -16,17 +18,48 @@ document.getElementById("help_id").onclick = function(){
 	document.getElementById("find_house_form").style.display = "none";
 }
 
+function onApp()
+{
+	document.getElementById("government_site").style.display = "block";
+	document.getElementById("about_site").style.display = "none";
+	document.getElementById("about_me").style.display = "none";
+
+}
+
+function onAboutSite()
+{
+	document.getElementById("government_site").style.display = "none";
+	document.getElementById("about_site").style.display = "block";
+	document.getElementById("about_me").style.display = "none";
+
+}
+
+function onAboutMe()
+{
+	document.getElementById("government_site").style.display = "none";
+	document.getElementById("about_site").style.display = "none";
+	document.getElementById("about_me").style.display = "block";
+
+}
 
 function onLoad()
 {
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("state").style.display = "none";
 	document.getElementById("help").style.display = "block";
+	onApp();
 }
 
 $(function()
 {
 
+		$("#about_site_id").click(function(){
+			onAboutSite();
+		});
+
+		$("#about_me_id").click(function(){
+			onAboutMe();
+		});
 		
 		function showPosition(position) {
 		   var url = "https://congress.api.sunlightfoundation.com/legislators/locate";
@@ -91,6 +124,7 @@ $(function()
 		}});
 		});
         $("#house_menu_item").click(function(){
+			onApp();
 			document.getElementById("federal").style.display = "block";
 			document.getElementById("senator_list").style.display = "none";
 			document.getElementById("help").style.display = "none";
