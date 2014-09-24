@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	background-color: PapayaWhip;
 	}
 
 #topbar {
@@ -11,7 +12,7 @@ body {
 	height:60px;
 	content:"";
 	background-image: url('../images/flag_banner.png');
-	opacity: 0.6;
+	opacity: 0.5;
 	 position: absolute;
 	 top:0;
 	 z-index: -1;

@@ -8,14 +8,6 @@ document.getElementById("senate_menu_item").onclick = function(){
 
 }
 
-/**document.getElementById("house_menu_item").onclick = function(){
-	document.getElementById("federal").style.display = "block";
-	document.getElementById("senator_list").style.display = "none";
-	document.getElementById("help").style.display = "none";
-	document.getElementById("find_senator_form").style.display = "none";
-	document.getElementById("find_house_form").style.display = "block";
-}*/
-
 document.getElementById("help_id").onclick = function(){
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("senator_list").style.display = "none";
@@ -66,6 +58,36 @@ $(function()
 				$("#senator_list").css('display','inline-block');
 			}});
 		}
+
+		$("#find_congressmen").click(function(){
+			var zipcode = $("#zip_code").val();
+			var apikey = "d2186106d61b4296b0b38090606a96c8";
+			var url = "https://congress.api.sunlightfoundation.com/legislators/locate";
+			url += "?title=Sen&zip=" + zipcode + "&apikey="+apikey;
+			innerHTML ="";
+			$.ajax({url:url,success:function(result){
+				    results = result['results'];
+				    results.forEach(function(representative){
+					if(representative['chamber']=="house")
+					{
+						innerHTML +="<tr>";
+						innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
+						innerHTML += "<td style='text-align:center;''>" + representative['party'] + "</td>";
+						innerHTML += "<td><a href='mailto:" + representative['oc_email']+ "' target=_blank>email</a></td>";
+						innerHTML += "<td><a href='" + representative['contact_form']+ "' target=_blank>contact</a></td>";
+						innerHTML += "<td><a href='" + representative['website'] + "' target=_blank'>website</a></td>";
+						innerHTML += "<td><a href='http://www.facebook.com/" + representative['facebook_id'] + "' target='_blank'>"
+							+ "facebook page</a></td>";
+						innerHTML += "<td><a href='http://www.twitter.com/" + representative['twitter_id'] + "' target='_blank'>"
+							+ "twitter page </a></td>";
+						innerHTML += "<td><a href='http://www.youtube.com/user/" + representative['youtube_id'] + "' target='_blank'>"
+							+ "youtube page </a></td>";
+						innerHTML +="</tr>";
+						$("#senator_table_body").html(innerHTML);
+						$("#senator_list").css('display','inline-block');
+  				}});
+		}});
+		});
         $("#house_menu_item").click(function(){
 			document.getElementById("federal").style.display = "block";
 			document.getElementById("senator_list").style.display = "none";
