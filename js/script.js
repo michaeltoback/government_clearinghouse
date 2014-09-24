@@ -1,55 +1,27 @@
-document.getElementById("federal_id").onclick = function(){
-	document.getElementById("state_menu").style.display = "none";
-	document.getElementById("federal_menu").style.display = "block";
-	document.getElementById("federal").style.display = "block";
-	document.getElementById("state").style.display = "none";
-	document.getElementById("help").style.display = "none";
-	document.getElementById("federal").style.display = "none";
-	document.getElementById("federal_help").style.display = "block";
-
-}
-
-document.getElementById("state_id").onclick = function(){
-	document.getElementById("federal_menu").style.display = "none";
-	document.getElementById("state_menu").style.display = "block";
-	document.getElementById("federal").style.display = "none";
-	document.getElementById("state").style.display = "block";
-	document.getElementById("help").style.display = "none";
-	document.getElementById("federal").style.display = "none";
-	document.getElementById("federal_help").style.display = "none";
-}
-
-document.getElementById("help_id").onclick = function(){
-	document.getElementById("federal_menu").style.display = "none";
-	document.getElementById("state_menu").style.display = "none";
-	document.getElementById("federal").style.display = "none";
-	document.getElementById("state").style.display = "none";
-	document.getElementById("help").style.display = "block";
-	document.getElementById("federal").style.display = "none";
-	document.getElementById("federal_help").style.display = "none";
-	document.getElementById("find_house_form").style.display = "block";
-}
 
 document.getElementById("senate_menu_item").onclick = function(){
 	document.getElementById("federal").style.display = "block";
 	document.getElementById("find_senator_form").style.display = "block";
 	document.getElementById("senator_list").style.display = "none";
-	document.getElementById("federal_help").style.display = "none";
+	document.getElementById("help").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
 
 }
 
-document.getElementById("house_menu_item").onclick = function(){
+/**document.getElementById("house_menu_item").onclick = function(){
 	document.getElementById("federal").style.display = "block";
 	document.getElementById("senator_list").style.display = "none";
-	document.getElementById("federal_help").style.display = "none";
+	document.getElementById("help").style.display = "none";
 	document.getElementById("find_senator_form").style.display = "none";
 	document.getElementById("find_house_form").style.display = "block";
-}
+}*/
 
-document.getElementById("federal_help_menu_item").onclick = function(){
-	document.getElementById("federal_help").style.display = "block";
-
+document.getElementById("help_id").onclick = function(){
+	document.getElementById("federal").style.display = "none";
+	document.getElementById("senator_list").style.display = "none";
+	document.getElementById("help").style.display = "block";
+	document.getElementById("find_senator_form").style.display = "none";
+	document.getElementById("find_house_form").style.display = "none";
 }
 
 
@@ -57,7 +29,7 @@ function onLoad()
 {
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("state").style.display = "none";
-	document.getElementById("federal_help").style.display = "none";
+	document.getElementById("help").style.display = "block";
 }
 
 $(function()
@@ -94,7 +66,12 @@ $(function()
 				$("#senator_list").css('display','inline-block');
 			}});
 		}
-        $("#find_congressmen").click(function(){
+        $("#house_menu_item").click(function(){
+			document.getElementById("federal").style.display = "block";
+			document.getElementById("senator_list").style.display = "none";
+			document.getElementById("help").style.display = "none";
+			document.getElementById("find_senator_form").style.display = "none";
+			document.getElementById("find_house_form").style.display = "block";
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(showPosition);
 		    } else {
