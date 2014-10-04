@@ -50,7 +50,7 @@ h1{
 	padding-left: 50px;
 }
 
-#help_id, #senate_menu_item,
+#help_id, #senate_menu_item, #historical_menu_item,
 #house_menu_item, #upper_house_menu_item,
 #lower_house_menu_item,  #about_me_id{
 		list-style: none;
@@ -88,7 +88,7 @@ h1{
 #main_content {
 	padding-left: 40px;
 }
-#find_senator_form {
+#find_senator_form, #abe_lincoln {
 	width:300px;
 	float: left;
 }
@@ -99,14 +99,14 @@ h1{
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
 }
-#senator_list {
+#senator_list, #history_list {
 	padding:0 0 0 0;
 	margin: 0 0 0 0;
 	float: left;
 	margin-right: 400px;
 	margin-top: 35px;
 }
-#senator_table  {
+#senator_table, #history_table  {
 	border: 2px solid black;
 	border-collapse: collapse;
 	margin-left: 100px;
@@ -114,12 +114,12 @@ h1{
 	background-color: LightGray;
 }
 
-#senator_table td{
+#senator_table, #history_table td{
 	padding:5px 5px 5px 5px;
 	border: 1px solid white;
 }
 
-#senator_table th{
+#senator_table, #history_table th{
 	padding:5px 5px 5px 5px;
 	border: 1px solid white;
 	color:white;

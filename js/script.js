@@ -9,6 +9,12 @@ document.getElementById("senate_menu_item").onclick = function(){
 
 }
 
+document.getElementById("historical_menu_item").onclick = function(){
+	onHistory();
+	document.getElementById("history_list").style.display = "none";
+
+}
+
 document.getElementById("help_id").onclick = function(){
 	onApp();
 	document.getElementById("federal").style.display = "none";
@@ -18,8 +24,16 @@ document.getElementById("help_id").onclick = function(){
 	document.getElementById("find_house_form").style.display = "none";
 }
 
+function onHistory()
+{
+	document.getElementById("historical_site").style.display = "block";
+	document.getElementById("government_site").style.display = "none";
+	document.getElementById("about_site").style.display = "none";
+	document.getElementById("about_me").style.display = "none";	
+}
 function onApp()
 {
+	document.getElementById("historical_site").style.display = "none";
 	document.getElementById("government_site").style.display = "block";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "none";
@@ -31,7 +45,7 @@ function onAboutSite()
 	document.getElementById("government_site").style.display = "none";
 	document.getElementById("about_site").style.display = "block";
 	document.getElementById("about_me").style.display = "none";
-
+	document.getElementById("historical_site").style.display = "none";
 }
 
 function onAboutMe()
@@ -39,6 +53,7 @@ function onAboutMe()
 	document.getElementById("government_site").style.display = "none";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "block";
+	document.getElementById("historical_site").style.display = "none";
 
 }
 
@@ -46,6 +61,7 @@ function onLoad()
 {
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("state").style.display = "none";
+	document.getElementById("historical_site").style.display = "none";
 	document.getElementById("help").style.display = "block";
 	onApp();
 }
@@ -74,24 +90,30 @@ $(function()
 					{
 						innerHTML +="<tr>";
 						innerHTML += "<td>"+ congressman['first_name']+ " " + congressman['last_name'] + "</td>";
-						innerHTML += "<td style='text-align:center;''>" + congressman['party'] + "</td>";
 						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + congressman['bioguide_id']+ "' target=_blank>biography</a></td>";
-						innerHTML += "<td><a href='mailto:" + congressman['oc_email']+ "' target=_blank>email</a></td>";
-						innerHTML += "<td><a href='" + congressman['contact_form']+ "' target=_blank>contact</a></td>";
-						innerHTML += "<td><a href='" + congressman['website'] + "' target=_blank'>website</a></td>";
-						innerHTML += "<td><a href='http://www.facebook.com/" + congressman['facebook_id'] + "' target='_blank'>"
-							+ "facebook page</a></td>";
-						innerHTML += "<td><a href='http://www.twitter.com/" + congressman['twitter_id'] + "' target='_blank'>"
-							+ "twitter page </a></td>";
-						innerHTML += "<td><a href='http://www.youtube.com/" + congressman['youtube_id'] + "' target='_blank'>"
-							+ "youtube page </a></td>";
 						innerHTML +="</tr>";
 					}
 				});
 				$("#senator_table_body").html(innerHTML);
-				$("#senator_list").css('display','inline-block');
 			}});
 		}
+		$("#abe_lincoln").click(function(){
+			var url = "http://198.199.114.41:8000/api2/legislator/?format=json&last_name=Lincoln&first_name=Abraham";
+			innerHTML ="";
+			$.ajax({url:url,
+				success:function(result){
+				    results = result['objects'];
+				    results.forEach(function(representative){
+					innerHTML +="<tr>";
+					innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
+					innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + representative['bioguide_id']+ "' target=_blank>biography</a></td>";
+					innerHTML +="</tr>";
+					$("#history_table_body").html(innerHTML);
+					$("#history_list").css('display','inline-block');
+
+				});
+		}});
+        });
 
 		$("#find_congressmen").click(function(){
 			var zipcode = $("#zip_code").val();
