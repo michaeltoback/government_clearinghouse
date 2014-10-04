@@ -121,6 +121,7 @@ $(function()
 			$.ajax({url:url,
 				success:function(result){
 				    results = result['objects'];
+				    $("#history_table_body").html("");
 				    results.forEach(function(term){
 				    	legislator_id = term['legislator']
 						var leg_url = "http://198.199.114.41:8000" + legislator_id + "?format=json";
