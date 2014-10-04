@@ -115,6 +115,28 @@ $(function()
 		}});
         });
 
+		$("#find_history").click(function(){
+			var url = "http://198.199.114.41:8000/api1/terms/?format=json&terms_start__lte=" + $("#history_year").val();
+			url += "-01-01&terms_end__gte=" + $("#history_year").val() + "-01-01&terms_state=" + $('#history_state').val();
+			$.ajax({url:url,
+				success:function(result){
+				    results = result['objects'];
+				    results.forEach(function(term){
+				    	legislator_id = term['legislator']
+						var leg_url = "http://198.199.114.41:8000" + legislator_id + "?format=json";
+						$.ajax({url:leg_url,
+							success:function(representative){
+								var innerHTML ="";
+								innerHTML +="<tr>";
+								innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
+								innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + representative['bioguide_id']+ "' target=_blank>biography</a></td>";
+								innerHTML +="</tr>";
+								$("#history_table_body").html($("#history_table_body").html() + innerHTML);
+							}});
+					});
+					$("#history_list").css('display','inline-block');
+				}});
+        });
 		$("#find_congressmen").click(function(){
 			var zipcode = $("#zip_code").val();
 			var apikey = "d2186106d61b4296b0b38090606a96c8";

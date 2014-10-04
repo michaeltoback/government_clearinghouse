@@ -88,7 +88,7 @@ h1{
 #main_content {
 	padding-left: 40px;
 }
-#find_senator_form, #abe_lincoln {
+#find_senator_form, #abe_lincoln_div {
 	width:300px;
 	float: left;
 }
