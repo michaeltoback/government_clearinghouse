@@ -1,7 +1,8 @@
 body {
 	margin: 0;
-	background-color: PapayaWhip;
+	background-color: PaleTurquoise;
 	}
+
 
 #topbar {
 	display:block;
@@ -9,19 +10,32 @@ body {
 }
 #topbar::after {
 	width:100%;
-	height:60px;
+	height:62px;
 	content:"";
 	background-image: url('../images/flag_banner.png');
 	opacity: 0.5;
 	 position: absolute;
 	 top:0;
+	 left:0;
 	 z-index: -1;
 }
 #banner {
 	width:100%;
 	margin-top: -15px;
 }
+#main_content {
+	padding-top: 30px;
+	padding-left: 40px;
+	width:90%;
+	margin: auto;
+}
 
+.accord{
+	height: 30px;
+	background-color: SteelBlue;
+	color:BlanchedAlmond;
+	padding-left: 20px;
+}
 h1{ 
 	text-align:center;
 	margin:0;
@@ -51,9 +65,24 @@ h1{
 	padding-left: 50px;
 }
 
-#help_id, #senate_menu_item, #historical_menu_item,
+#about_site {
+	padding-top: 30px;
+}
+#about_site_id{
+		list-style: none;
+		float: right;
+		margin-left: 10px;
+		padding: 0px 10px 0px 10px;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-bottom: 1px solid black;
+		background-color: LightGray;
+		margin-left: 50px;
+}
+
+#senate_menu_item, #historical_menu_item,
 #house_menu_item, #upper_house_menu_item,
-#lower_house_menu_item,  #about_me_id{
+#lower_house_menu_item  {
 		list-style: none;
 		float: left;
 		padding: 0px 10px 0px 10px;
@@ -63,29 +92,29 @@ h1{
 		background-color: LightGray;
 }
 
-#about_site_id{
+#help_id,#about_me_id{
 		list-style: none;
 		float: left;
-		margin-left: 50px;
 		padding: 0px 10px 0px 10px;
 		border-left: 1px solid black;
 		border-right: 1px solid black;
 		border-bottom: 1px solid black;
 		background-color: LightGray;
 }
+
+#coming_soon {
+	padding-top:30px;
+	padding-left: 50px;
+}
+
 
 
 #site_menu li:hover{
-	font-weight: bold;
 	text-decoration: underline;
 }
 
 .clear {
 	clear: both;
-}
-#main_content {
-	padding-top: 30px;
-	padding-left: 40px;
 }
 #find_senator_form, #abe_lincoln_div {
 	width:300px;

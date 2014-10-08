@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>Government Clearinghouse Site</title>
+    <title>US Government Clearinghouse Site</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="US Government Information Clearinghouse " />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script>
 		var latitude =0;
 		var longitude=0;
@@ -43,15 +44,15 @@
 					<li id="state_id">State:</li>
 						<li id="upper_house_menu_item">Upper House</li>
 						<li id="lower_house_menu_item">Lower House</li>
-					<li id="help_id">Help</li>
 					<li id="about_site_id">About this site</li>
 					<li id="about_me_id">About me</li>
+					<li id="help_id">Help</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="clear"></div>
 		<div id="main_content">
+			<div class="clear"></div>
 			<div id="historical_site">
 				<div id="abe_lincoln_div">
 					<h2>Explore our history</h2>
@@ -124,11 +125,12 @@
 			</div>
 			<div id="government_site">
 				<div id="help" class="help">
-					<p>The purpose of this application is to provide access to your elected officials at the state and federal level, as well as understanding what they are (or are not) doing on your behalf.</p>
-					<p>Based on your location, you can find your state and federal representatives, any social media links available, and look at what legislation they are sponsoring in the current administration</p>
+					<p>The purpose of this application is to provide access to US elected officials at the state and federal level, as well as understanding what they are (or are not) doing on your behalf.</p>
+					<p>Based on your location, you can find state and federal representatives, any social media links available, and look at what legislation they are sponsoring in the current administration</p>
 
 				</div>
 				<div id="federal">
+					<div class="clear"></div>
 					<span id="find_senator_form">
 						<h2>Find your senators</h2>
 						<select id="senator_state">
@@ -203,23 +205,59 @@
 			</div>
 		</div>
 		<div id="about_site">
-			<p> This site was built using:</p>
-			<ul> 
-				<li><a href="http://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a></li>
-				<li><a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a></li>
-				<li><a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">javascript</a></li>
-				<li><a href="http://jquery.com" target="_blank">JQuery</a></li>
-				<li>with <a href="http://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST APIs</a> to the <a href="http://sunlightfoundation.com/api/" target="_blank">Sunlight foundation Congress API</a></li>
-			</ul>
-			<br/>
-			<p>The code is controlled in git, you can find the git repositories <a href="https://github.com/michaeltoback/" target="_blank">here</a>
+			<h4 class="accord"> How this website was built</h4>
+			<div>
+				<ul> 
+					<li><a href="http://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a></li>
+					<li><a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a></li>
+					<li><a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">javascript</a></li>
+					<li><a href="http://jquery.com" target="_blank">JQuery</a></li>
+					<li>with <a href="http://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST APIs</a> to the <a href="http://sunlightfoundation.com/api/" target="_blank">Sunlight foundation Congress API</a></li>
+				</ul>
+			</div>
+			<h4 class="accord"> How the server was built</h4>
+			<div>
+			<p>We are using a separate server and hosted website, as if our server were an independent service vending REST APIS. The server was built using:
+				<ul>
+					<li><a href="http://python.org" target="_blank">Python</a></li>
+					<li><a href="http://www.djangoproject.com" target="_blank">Django</a></li>
+					<li><a href="http://python.org" target="_blank">Python</a></li>
+					<li><a href="http://mysql.com" target="_blank">MySQL</a></li>
+				</ul>
+			</p>
+			</div>
+			<h4 class="accord">How the source for this site is controlled</h4>
+			<div>
+			<p>The code is controlled in <a href="http://github.com">github</a> in two separate repositories. One for the website, one for the server code.</p>
+			<p>You can find the git repositories <a href="https://github.com/michaeltoback/" target="_blank">here</a>
+			</div>
 		</div>
 		<div id="about_me">
+			<h4 class="accord">What do I do?</h4>
+			<div>
 			<p>I am a software developer with formal training as a biomedical engineer, electrical engineer, and am licensed to practice before the <a href="http://members.calbar.ca.gov/fal/Member/Detail/248938" target="_blank">California Bar</a> and the <a href="https://oedci.uspto.gov/OEDCI/details.do?regisNum=56456" target="_blank">US Patent Office</a>.
 			</p>
 			<p> <a href="www.linkedin.com/in/mtoback" target="_blank">Here</a> is a link to my LinkedIn profile.</p>
-
+			</div>
+			<h4 class="accord">What do I know?</h4>
+			<div>
 			<p>I know programming languages like <a href="http://www.python.org" target="_blank">Python</a>, <a href="https://www.java.com/en/" target="_blank">Java</a>, and <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">Javascript</a>. I've worked with C++, Ada, Perl, and many other languages in the past.</p>
+			<p>I know databases. I use MySQL and MongoDB on a regular basis, and in the past I've used DB2 and SQLServer</p>
+			<p>I know how to use VMWare Workstation, Fusion, vCenter, and vCloud Air to build Virtual Machines and have built and used VMs with Ubuntu, Centos and Windows.</p>
+			<p>I know some shell scripting, though not a guru can usually make things work</p>
+			<p>I know process. From Waterfall to Agile to Lean. I've lead large teams using MIL-STD-2167, am a certified Scrum Master and am a Rally Administrator</p>
+			<p>I know continuous integration. I've managed a Jenkins server, integrated with git, robotframework, and Selenium</p>
+			</div>
+			<h4 class="accord">What do I like to do when I'm not working</h4>
+			<div>
+				<p>I play piano, some guitar, enjoy listening to classical music</p>
+				<p>I enjoy reading science fiction, historical novels, and history</p>
+				<p>I am teaching myself French and Spanish</p>
+			</div> 
+			</div>
+		</div>
+		<div id="coming_soon">
+			<img src="images/coming_soon.jpg" alt="Coming soon!"/>
 		</div>
 	</div>
     <script src="js/json2.js"></script>

@@ -6,6 +6,7 @@ document.getElementById("senate_menu_item").onclick = function(){
 	document.getElementById("senator_list").style.display = "none";
 	document.getElementById("help").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("coming_soon").style.display = "none";
 
 }
 
@@ -22,6 +23,25 @@ document.getElementById("help_id").onclick = function(){
 	document.getElementById("help").style.display = "block";
 	document.getElementById("find_senator_form").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("coming_soon").style.display = "none";
+}
+
+document.getElementById("upper_house_menu_item").onclick=function(){
+	document.getElementById("federal").style.display = "none";
+	document.getElementById("help").style.display = "none";
+	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("historical_site").style.display = "none";
+	document.getElementById("coming_soon").style.display = "block";
+
+}
+
+document.getElementById("lower_house_menu_item").onclick=function(){
+	document.getElementById("federal").style.display = "none";
+	document.getElementById("help").style.display = "none";
+	document.getElementById("historical_site").style.display = "none";
+	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("coming_soon").style.display = "block";
+
 }
 
 function onHistory()
@@ -30,6 +50,7 @@ function onHistory()
 	document.getElementById("government_site").style.display = "none";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "none";	
+	document.getElementById("coming_soon").style.display = "none";
 }
 function onApp()
 {
@@ -37,6 +58,7 @@ function onApp()
 	document.getElementById("government_site").style.display = "block";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "none";
+	document.getElementById("coming_soon").style.display = "none";
 
 }
 
@@ -46,6 +68,7 @@ function onAboutSite()
 	document.getElementById("about_site").style.display = "block";
 	document.getElementById("about_me").style.display = "none";
 	document.getElementById("historical_site").style.display = "none";
+	document.getElementById("coming_soon").style.display = "none";
 }
 
 function onAboutMe()
@@ -54,7 +77,7 @@ function onAboutMe()
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "block";
 	document.getElementById("historical_site").style.display = "none";
-
+	document.getElementById("coming_soon").style.display = "none";
 }
 
 function onLoad()
@@ -114,7 +137,6 @@ $(function()
 				});
 		}});
         });
-
 		$("#find_history").click(function(){
 			var url = "http://198.199.114.41:8000/api1/terms/?format=json&terms_start__lte=" + $("#history_year").val();
 			url += "-01-01&terms_end__gte=" + $("#history_year").val() + "-01-01&terms_state=" + $('#history_state').val();
@@ -153,21 +175,23 @@ $(function()
 						innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
 						innerHTML += "<td style='text-align:center;''>" + representative['party'] + "</td>";
 						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + representative['bioguide_id']+ "' target=_blank>biography</a></td>";
-						innerHTML += "<td><a href='mailto:" + representative['oc_email']+ "' target=_blank>email</a></td>";
-						innerHTML += "<td><a href='" + representative['contact_form']+ "' target=_blank>contact</a></td>";
-						innerHTML += "<td><a href='" + representative['website'] + "' target=_blank'>website</a></td>";
-						innerHTML += "<td><a href='http://www.facebook.com/" + representative['facebook_id'] + "' target='_blank'>"
-							+ "facebook page</a></td>";
-						innerHTML += "<td><a href='http://www.twitter.com/" + representative['twitter_id'] + "' target='_blank'>"
-							+ "twitter page </a></td>";
-						innerHTML += "<td><a href='http://www.youtube.com/user/" + representative['youtube_id'] + "' target='_blank'>"
-							+ "youtube page </a></td>";
+					    innerHTML += "<td align='center'><a href='mailto:" + representative['oc_email']+ " target='_blank'><img src='images/Mail.png' alt='email'></a></td>";
+						innerHTML += "<td align='center'><a href='" + representative['contact_form']+ "' target=_blank>contact</a></td>";
+						innerHTML += "<td align='center'><a href='" + representative['website'] + "' target=_blank'><img alt='website' src='images/world.PNG' width=25 height=25/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.facebook.com/" + representative['facebook_id'] + "' target='_blank'>"
+							+ "<img width=25 height=25 src='images/FB-f-Logo__blue_100.png' alt='facebook page'/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.twitter.com/" + representative['twitter_id'] + "' target='_blank'>"
+							+ "<img alt='twitter page' width=25 height=25 src='images/1412501097_Twitter_alt_3.png'/> </a></td>";
+						innerHTML += "<td align='center'><a href='http://www.youtube.com/user/" + representative['youtube_id'] + "' target='_blank'>"
+							+ "<img src='images/YouTube-icon.png' alt='youtube page'/></a></td>";
 						innerHTML +="</tr>";
 						$("#senator_table_body").html(innerHTML);
 						$("#senator_list").css('display','inline-block');
   				}});
 		}});
 		});
+		$("#about_site").accordion();
+		$("#about_me").accordion();
         $("#house_menu_item").click(function(){
 			onApp();
 			document.getElementById("federal").style.display = "block";
@@ -180,6 +204,11 @@ $(function()
 		    } else {
 		       alert("Geolocation is not supported by this browser.");
 		    }
+		});
+		$('#zip_code').keypress(function (e) {
+  			if (e.which == 13) {
+    			$('#find_congressmen').click();
+		  	}
 		});
 		$("#find_senator").click(function(){
 			var state = $('#senator_state').val();
@@ -194,15 +223,15 @@ $(function()
 						innerHTML += "<td>"+ senator['first_name']+ " " + senator['last_name'] + "</td>";
 						innerHTML += "<td style='text-align:center;''>" + senator['party'] + "</td>";
 						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + senator['bioguide_id']+ "' target=_blank>biography</a></td>";
-						innerHTML += "<td><a href='mailto:" + senator['oc_email']+ "' target=_blank>email</a></td>";
+						innerHTML += "<td align='center'><a href='mailto:" + senator['oc_email']+ " target='_blank'><img src='images/Mail.png' alt='email'></a></td>";
 						innerHTML += "<td><a href='" + senator['contact_form']+ "' target=_blank>contact</a></td>";
-						innerHTML += "<td><a href='" + senator['website'] + "' target=_blank'>website</a></td>";
-						innerHTML += "<td><a href='http://www.facebook.com/" + senator['facebook_id'] + "' target='_blank'>"
-							+ "facebook page</a></td>";
-						innerHTML += "<td><a href='http://www.twitter.com/" + senator['twitter_id'] + "' target='_blank'>"
-							+ "twitter page </a></td>";
-						innerHTML += "<td><a href='http://www.youtube.com/" + senator['youtube_id'] + "' target='_blank'>"
-							+ "youtube page </a></td>";
+						innerHTML += "<td align='center'><a href='" + senator['website'] + "' target=_blank'><img alt='website' src='images/world.PNG' width=25 height=25/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.facebook.com/" + senator['facebook_id'] + "' target='_blank'>"
+							+ "<img width=25 height=25 src='images/FB-f-Logo__blue_100.png' alt='facebook page'/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.twitter.com/" + senator['twitter_id'] + "' target='_blank'>"
+							+ "<img alt='twitter page' width=25 height=25 src='images/1412501097_Twitter_alt_3.png'/> </a></td>";
+						innerHTML += "<td align='center'><a href='http://www.youtube.com/" + senator['youtube_id'] + "' target='_blank'>"
+							+ "<img src='images/YouTube-icon.png' alt='youtube page'/></a></td>";
 						innerHTML +="</tr>";
 						$("#senator_table_body").html(innerHTML);
 						$("#senator_list").css('display','inline-block');
