@@ -30,6 +30,8 @@ document.getElementById("upper_house_menu_item").onclick=function(){
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("help").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("about_site").style.display = "none";
+	document.getElementById("about_me").style.display = "none";
 	document.getElementById("historical_site").style.display = "none";
 	document.getElementById("coming_soon").style.display = "block";
 
@@ -40,6 +42,8 @@ document.getElementById("lower_house_menu_item").onclick=function(){
 	document.getElementById("help").style.display = "none";
 	document.getElementById("historical_site").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("about_site").style.display = "none";
+	document.getElementById("about_me").style.display = "none";
 	document.getElementById("coming_soon").style.display = "block";
 
 }
