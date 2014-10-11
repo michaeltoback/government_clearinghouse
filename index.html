@@ -191,7 +191,7 @@
 					<span id="find_house_form">
 						<h3>Using a zip code</h3>
 						<h4>(if geolocation doesn't work for you)</h4>
-						<input type="text" length="5" id="zip_code"/>
+						<input type="number" id="zip_code" min="0" max="99999"/>
 						<button id="find_congressmen">Find My Congressmen</button>
 					</span>
 					<span id="senator_list">
@@ -206,6 +206,7 @@
 			</div>
 		</div>
 		<div id="about_site">
+
 			<h4 class="accord"> How this website was built</h4>
 			<div>
 				<ul> 
@@ -216,16 +217,28 @@
 					<li>with <a href="http://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST APIs</a> to the <a href="http://sunlightfoundation.com/api/" target="_blank">Sunlight foundation Congress API</a></li>
 				</ul>
 			</div>
+			<h4 class="accord"> How it works</h4>
+			<div>
+								<img width="300px" src="images/architecture.jpg"/>
+				<p>The Senate accepts the state from a select list and calls the congress API of the sunlight foundation.</p>
+				<p>The House attempts to use the browser's Geolocation API to get lat/long then calls the Congress API that uses location. If that works it displays it. It also gives the option of using zip code via a less accurate Sunlight foundation API</p>
+				<p>The historic accepts a state from the list and year, and passes it to my own API which queries a local database. The database contains three tables, representatives, terms and zipcodes. Representative contains information about the representative including the state he/she served in, where terms contains the list of terms that the person served, by start and end date, and a reference back to the representative entry. This data came from a yaml file downloaded from the sunlight foundation website, then parsed using pyyaml and calls to create entries in the database via the django object model. The query then looks for all terms which match the state and where the start date is less than or equal to the year entered, and the end date is greater than or equal to the year entered. We can then loop through the terms returned to find the representative information.</p>
+				<p>For the state data, to be done later, the Congress API does not support zip codes, so where geolocation api does not work we will need an alternative. In preparation for that I found a csv file which translates zipcodes to an approximate lat/long value. I then use standard python text parsing techniques like split to
+				generate the data to fill the database via the Django Object model.</p>
+			</div>
 			<h4 class="accord"> How the server was built</h4>
 			<div>
-			<p>We are using a separate server and hosted website, as if our server were an independent service vending REST APIS. The server was built using:
+			<p>I am using a separate server and hosted website, as if our server were an independent service vending REST APIS. </p>
+			<p>The server is a droplet from <a href="http://www.digitalocean.com" target="_blank">digital ocean</a> running Ubuntu 14, built using:</p>
 				<ul>
 					<li><a href="http://python.org" target="_blank">Python</a></li>
 					<li><a href="http://www.djangoproject.com" target="_blank">Django</a></li>
 					<li><a href="http://python.org" target="_blank">Python</a></li>
 					<li><a href="http://mysql.com" target="_blank">MySQL</a></li>
 				</ul>
-			</p>
+			<p>I am hosting our web site on <a href="http://ecowebhosting.co.uk" target="_blank">Ecowebhosting</a></p>
+			<p>The HTML is being developed using <a href="http://www.sublimetext.com" target="_blank">Sublime Text 2</a> and the python is developed using <a href="spring.io/tools" target="_blank">Springsource version of Eclipse</a> on Windows 7.</p>
+			<p>I am uploading the http to the website using <a href="https://addons.mozilla.org/en-US/firefox/addon/fireftp/" target="_blank">FireFTP</a>, a plugin inside of Firefox, and using git to control the movement of python between the development Ubuntu VM I have running under <a href="http://www.vmware.com/products/workstation/features" target="_blank">VMWare Workstation</a> and the target droplet.</p>
 			</div>
 			<h4 class="accord">How the source for this site is controlled</h4>
 			<div>

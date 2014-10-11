@@ -93,6 +93,7 @@ function onLoad()
 	onApp();
 }
 
+
 $(function()
 {
 
@@ -104,26 +105,6 @@ $(function()
 			onAboutMe();
 		});
 		
-		function showPosition(position) {
-		   var url = "https://congress.api.sunlightfoundation.com/legislators/locate";
-		   url += "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
-		   var apikey = "d2186106d61b4296b0b38090606a96c8";
-		   url += "&apikey=" + apikey;
-			$.ajax({url:url,success:function(result){
-				results = result['results'];
-				innerHTML = "";
-				results.forEach(function(congressman){
-					if(congressman['chamber']=="house")
-					{
-						innerHTML +="<tr>";
-						innerHTML += "<td>"+ congressman['first_name']+ " " + congressman['last_name'] + "</td>";
-						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + congressman['bioguide_id']+ "' target=_blank>biography</a></td>";
-						innerHTML +="</tr>";
-					}
-				});
-				$("#senator_table_body").html(innerHTML);
-			}});
-		}
 		$("#abe_lincoln").click(function(){
 			var url = "http://198.199.114.41:8000/api2/legislator/?format=json&last_name=Lincoln&first_name=Abraham";
 			innerHTML ="";
@@ -141,12 +122,56 @@ $(function()
 				});
 		}});
         });
+
+		function showPosition(position) {
+		   var url = "https://congress.api.sunlightfoundation.com/legislators/locate";
+		   url += "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+		   var apikey = "d2186106d61b4296b0b38090606a96c8";
+		   url += "&apikey=" + apikey;
+			$.ajax({url:url,success:function(result){
+				results = result['results'];
+				innerHTML = "";
+				results.forEach(function(congressman){
+					if(congressman['chamber']=="house")
+					{
+						innerHTML +="<tr>";
+						innerHTML += "<td>"+ congressman['first_name']+ " " + congressman['last_name'] + "</td>";
+						innerHTML += "<td style='text-align:center;''>" + congressman['party'] + "</td>";
+						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + congressman['bioguide_id']+ "' target=_blank>biography</a></td>";
+					    innerHTML += "<td align='center'><a href='mailto:" + congressman['oc_email']+ " target='_blank'><img src='images/Mail.png' alt='email'></a></td>";
+						innerHTML += "<td align='center'><a href='" + congressman['contact_form']+ "' target=_blank>contact</a></td>";
+						innerHTML += "<td align='center'><a href='" + congressman['website'] + "' target=_blank'><img alt='website' src='images/world.PNG' width=25 height=25/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.facebook.com/" + congressman['facebook_id'] + "' target='_blank'>"
+							+ "<img width=25 height=25 src='images/FB-f-Logo__blue_100.png' alt='facebook page'/></a></td>";
+						innerHTML += "<td align='center'><a href='http://www.twitter.com/" + congressman['twitter_id'] + "' target='_blank'>"
+							+ "<img alt='twitter page' width=25 height=25 src='images/1412501097_Twitter_alt_3.png'/> </a></td>";
+						innerHTML += "<td align='center'><a href='http://www.youtube.com/user/" + congressman['youtube_id'] + "' target='_blank'>"
+							+ "<img src='images/YouTube-icon.png' alt='youtube page'/></a></td>";
+						innerHTML +="</tr>";
+					}
+				});
+				$("#senator_table_body").html(innerHTML);
+				$("#senator_list").css('display','inline-block');
+			}});
+		}
+		
 		$("#find_history").click(function(){
+			var year = $("#history_year").val()
+			if (year < 1790)
+			{
+				alert("year must be at least 1790");
+				return;
+			}
 			var url = "http://198.199.114.41:8000/api1/terms/?format=json&terms_start__lte=" + $("#history_year").val();
 			url += "-01-01&terms_end__gte=" + $("#history_year").val() + "-01-01&terms_state=" + $('#history_state').val();
 			$.ajax({url:url,
 				success:function(result){
 				    results = result['objects'];
+				    if(results.length == 0){
+				    	alert($('#history_state').val() + " must not have been a state in " + $("#history_year").val()
+				    		+ "! please try again!");
+				    	return;
+				    }
 				    $("#history_table_body").html("");
 				    results.forEach(function(term){
 				    	legislator_id = term['legislator']
@@ -172,6 +197,10 @@ $(function()
 			innerHTML ="";
 			$.ajax({url:url,success:function(result){
 				    results = result['results'];
+				    if(results.length == 0){
+				    	alert(zipcode  + " is not working for this data, try another");
+				    	return;
+				    }
 				    results.forEach(function(representative){
 					if(representative['chamber']=="house")
 					{
@@ -194,8 +223,8 @@ $(function()
   				}});
 		}});
 		});
-		$("#about_site").accordion();
-		$("#about_me").accordion();
+		$("#about_site").accordion({heightStyle: "content"});
+		$("#about_me").accordion({heightStyle: "content"});
         $("#house_menu_item").click(function(){
 			onApp();
 			document.getElementById("federal").style.display = "block";
