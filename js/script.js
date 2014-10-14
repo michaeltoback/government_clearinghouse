@@ -123,6 +123,45 @@ $(function()
 		}});
         });
 
+		$("#john_kennedy").click(function(){
+			var url = "http://198.199.114.41:8000/api2/legislator/?format=json&last_name=Kennedy&first_name=John";
+			innerHTML ="";
+			$.ajax({url:url,
+				success:function(result){
+				    results = result['objects'];
+				    results.forEach(function(representative){
+				    if(representative['bioguide_id'] == 'K000107'){
+						innerHTML +="<tr>";
+						innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
+						innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + representative['bioguide_id']+ "' target=_blank>biography</a></td>";
+						innerHTML +="</tr>";
+						$("#history_table_body").html(innerHTML);
+						$("#history_list").css('display','inline-block');
+				    	
+				    }
+
+				});
+		}});
+        });
+
+		$("#richard_nixon").click(function(){
+			var url = "http://198.199.114.41:8000/api2/legislator/?format=json&last_name=Nixon&first_name=Richard";
+			innerHTML ="";
+			$.ajax({url:url,
+				success:function(result){
+				    results = result['objects'];
+				    results.forEach(function(representative){
+					innerHTML +="<tr>";
+					innerHTML += "<td>"+ representative['first_name']+ " " + representative['last_name'] + "</td>";
+					innerHTML += "<td><a href='http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + representative['bioguide_id']+ "' target=_blank>biography</a></td>";
+					innerHTML +="</tr>";
+					$("#history_table_body").html(innerHTML);
+					$("#history_list").css('display','inline-block');
+
+				});
+		}});
+        });
+
 		function showPosition(position) {
 		   var url = "https://congress.api.sunlightfoundation.com/legislators/locate";
 		   url += "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
@@ -163,7 +202,7 @@ $(function()
 				return;
 			}
 			var url = "http://198.199.114.41:8000/api1/terms/?format=json&terms_start__lte=" + $("#history_year").val();
-			url += "-01-01&terms_end__gte=" + $("#history_year").val() + "-01-01&terms_state=" + $('#history_state').val();
+			url += "-05-01&terms_end__gte=" + $("#history_year").val() + "-05-01&terms_state=" + $('#history_state').val();
 			$.ajax({url:url,
 				success:function(result){
 				    results = result['objects'];

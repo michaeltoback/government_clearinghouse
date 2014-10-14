@@ -80,6 +80,9 @@ h1{
 		margin-left: 50px;
 }
 
+#history_search_form {
+	float:left;
+}
 #senate_menu_item, #historical_menu_item,
 #house_menu_item, #upper_house_menu_item,
 #lower_house_menu_item  {
@@ -101,7 +104,33 @@ h1{
 		border-bottom: 1px solid black;
 		background-color: LightGray;
 }
+#footer {
+	width:100%;
+	height:130px;
+	line-height: 110%;
+	position:relative;
+	top:350px;
+	left:0;
+	background:LightGray;
+}
+.caveat {
+	margin-left: 30%;
+	margin-right: 10%;
+	font-weight: bold;
+	font-size: 0.9em;
+	padding: 0;
+}
+.summary{
+	margin:0 0 0 30%;
+	padding: 0;
+	font-size: 0.8em;
+}
 
+#footer img{
+	position:relative;
+	top: 10px;
+	left:15px;
+}
 #coming_soon {
 	padding-top:30px;
 	padding-left: 50px;
@@ -122,37 +151,55 @@ h1{
 }
 
 #find_senator {
-	width=100px;
-	height=40px;
+	width:100px;
+	height:20px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0:
+}
+
+#senator_list {
+	float: left;
+	display:inline-block;
+}
+
+#history_list {
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
+	height: 150px;
+	overflow-y:auto;
+	position:relative;
+	top:70px;
+	left:20px;
 }
-#senator_list, #history_list {
-	padding:0 0 0 0;
-	margin: 0 0 0 0;
-	float: left;
-	margin-right: 400px;
-	margin-top: 35px;
-}
-#senator_table, #history_table  {
+
+#history_table  {
 	border: 2px solid black;
 	border-collapse: collapse;
-	margin-left: 100px;
+	background-color: LightGray;
+	display:block;
+}
+
+#senator_table  {
+	border: 2px solid black;
+	border-collapse: collapse;
 	width: 650px;
+	margin-top: 50px;
 	background-color: LightGray;
 }
+
 
 #senator_table, #history_table td{
 	padding:5px 5px 5px 5px;
 	border: 1px solid white;
 }
-
 #senator_table, #history_table th{
 	padding:5px 5px 5px 5px;
 	border: 1px solid white;
 	color:white;
 	background-color: DarkGray;
+
 }
+
 
 .help {
 	font-size: 1.2em;
@@ -161,4 +208,10 @@ h1{
 #find_house_form {
 	width:300px;
 	float: left;
+}
+
+.accord img{
+	position:relative;
+	top:5px;
+	margin-right:5px;
 }
