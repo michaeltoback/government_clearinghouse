@@ -207,7 +207,7 @@
 			<div id="state">
 			</div>
 		</div>
-		<div id="about_site">
+		<div id="about_site" style="margin:0;padding:0">
 
 			<h4 class="accord"> <img src="images/shape_square_go.png" height="25px">How this website was built</h4>
 			<div>
@@ -221,22 +221,25 @@
 			</div>
 			<h4 class="accord"><img src="images/shape_square_go.png" height="25px"> How it works</h4>
 			<div>
-				<h4>Click on Image to see details</h4>
-								<a href="architecture.html" target="_blank"><img width="300px" src="images/architecture.jpg"/></a>
-<p>The Senate accepts the state from a select list and calls the congress API of the sunlight foundation.</p>
+				<div id="arch_image" style="float:left">
+								<a href="architecture.html" target="_blank"><img style="display:block" height="275px" src="images/architecture.jpg"/></a>
+				</div>
+				<div id="arch_desc" style="margin-left:250px">
+					<p><b>Click on image to see details</b></p>
+				<p>The Senate accepts the state from a select list and calls the congress API of the sunlight foundation.</p>
 				<p>The House attempts to use the browser's Geolocation API to get lat/long then calls the Congress API that uses location. If that works it displays it. It also gives the option of using zip code via a less accurate Sunlight foundation API</p>
 				<p>The historic accepts a state from the list and year, and passes it to my own API which queries a local database. The database contains three tables, representatives, terms and zipcodes. Representative contains information about the representative including the state he/she served in, where terms contains the list of terms that the person served, by start and end date, and a reference back to the representative entry. This data came from a yaml file downloaded from the sunlight foundation website, then parsed using pyyaml and calls to create entries in the database via the django object model. The query then looks for all terms which match the state and where the start date is less than or equal to the year entered, and the end date is greater than or equal to the year entered. We can then loop through the terms returned to find the representative information.</p>
 				<p>For the state data, to be done later, the Congress API does not support zip codes, so where geolocation api does not work we will need an alternative. In preparation for that I found a csv file which translates zipcodes to an approximate lat/long value. I then use standard python text parsing techniques like split to
 				generate the data to fill the database via the Django Object model.</p>
+				</div>
 			</div>
-			<h4 class="accord"><img src="images/shape_square_go.png"  height="25px"> How the server was built</h4>
+			<h4  class="accord"><img src="images/shape_square_go.png"  height="25px"> How the server was built</h4>
 			<div>
 			<p>I am using a separate server and hosted website, as if our server were an independent service vending REST APIS. </p>
 			<p>The server is a droplet from <a href="http://www.digitalocean.com" target="_blank">digital ocean</a> running Ubuntu 14, built using:</p>
 				<ul>
 					<li><a href="http://python.org" target="_blank">Python</a></li>
 					<li><a href="http://www.djangoproject.com" target="_blank">Django</a></li>
-					<li><a href="http://python.org" target="_blank">Python</a></li>
 					<li><a href="http://mysql.com" target="_blank">MySQL</a></li>
 				</ul>
 			<p>I am hosting our web site on <a href="http://ecowebhosting.co.uk" target="_blank">Ecowebhosting</a></p>
@@ -245,7 +248,7 @@
 			</div>
 			<h4 class="accord"><img src="images/shape_square_go.png" height="25px">How the source for this site is controlled</h4>
 			<div>
-			<p>The code is controlled in <a href="http://github.com">github</a> in two separate repositories. One for the website, one for the server code.</p>
+			<p>The code is controlled in <a href="http://github.com">github</a> in two separate repositories. <a href="https://github.com/michaeltoback/government_clearinghouse" target="_blank">One</a> for the website, <a href="https://github.com/michaeltoback/hello-django" target="_blank">one</a> for the server code.</p>
 			<p>You can find the git repositories <a href="https://github.com/michaeltoback/" target="_blank">here</a>
 			</div>
 		</div>
