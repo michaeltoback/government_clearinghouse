@@ -6,6 +6,8 @@ document.getElementById("senate_menu_item").onclick = function(){
 	document.getElementById("senator_list").style.display = "none";
 	document.getElementById("help").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("find_upper_house_form").style.display = "none";
+	document.getElementById("find_lower_house_form").style.display = "none";
 	document.getElementById("coming_soon").style.display = "none";
 
 }
@@ -23,6 +25,8 @@ document.getElementById("help_id").onclick = function(){
 	document.getElementById("help").style.display = "block";
 	document.getElementById("find_senator_form").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("find_upper_house_form").style.display = "none";
+	document.getElementById("find_lower_house_form").style.display = "none";
 	document.getElementById("coming_soon").style.display = "none";
 }
 
@@ -30,6 +34,8 @@ document.getElementById("upper_house_menu_item").onclick=function(){
 	document.getElementById("federal").style.display = "none";
 	document.getElementById("help").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("find_upper_house_form").style.display = "none";
+	document.getElementById("find_lower_house_form").style.display = "none";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "none";
 	document.getElementById("historical_site").style.display = "none";
@@ -42,6 +48,8 @@ document.getElementById("lower_house_menu_item").onclick=function(){
 	document.getElementById("help").style.display = "none";
 	document.getElementById("historical_site").style.display = "none";
 	document.getElementById("find_house_form").style.display = "none";
+	document.getElementById("find_upper_house_form").style.display = "none";
+	document.getElementById("find_lower_house_form").style.display = "none";
 	document.getElementById("about_site").style.display = "none";
 	document.getElementById("about_me").style.display = "none";
 	document.getElementById("coming_soon").style.display = "block";
@@ -271,6 +279,8 @@ $(function()
 			document.getElementById("help").style.display = "none";
 			document.getElementById("find_senator_form").style.display = "none";
 			document.getElementById("find_house_form").style.display = "block";
+			document.getElementById("find_upper_house_form").style.display = "none";
+			document.getElementById("find_lower_house_form").style.display = "none";
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(showPosition);
 		    } else {
